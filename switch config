@@ -1,0 +1,72 @@
+#switch config
+service password-encryption
+!
+hostname SW01
+!
+enable secret 5 m0Zfb2wT 
+!
+ip domain-name pxl.be
+!
+username Jason secret 5 BnQVP0Vs!
+interface FastEthernet0/1
+description connection to pc0
+!
+interface FastEthernet0/2
+description connection to pc1
+!
+interface FastEthernet0/3
+description connection to pc2
+!
+interface FastEthernet0/4
+description connection to pc3
+!
+interface FastEthernet0/5
+description connection to pc4
+!
+interface FastEthernet0/6
+description connection to pc5
+!
+interface FastEthernet0/7
+description connection to pc6
+!
+interface FastEthernet0/8
+description connection to pc7
+!
+interface FastEthernet0/9
+description connection to pc8
+!
+interface FastEthernet0/10
+description connection to pc9
+!
+interface GigabitEthernet0/1
+description connection to R01
+!
+interface Vlan1
+ip address 10.0.0.11 255.255.255.240
+ipv6 address 2001:DB8:ACAD:1::B/64
+!
+ip default-gateway 10.0.0.12
+!
+banner motd ^CWarning! Unauthorized access is prohibited^C
+!
+line con 0
+password 7 gtVL08YI
+login
+!
+line vty 0 4
+exec-timeout 5 30
+password 7 GqAvm7wt
+login local
+transport input ssh
+line vty 5 15
+exec-timeout 5 30
+password 7 GqAvm7wt
+login local
+transport input ssh
+
+
+
+
+
+
+
