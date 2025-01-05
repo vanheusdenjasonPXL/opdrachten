@@ -1,0 +1,35 @@
+#router config:
+service password-encryption
+security passwords min-length 8
+!
+hostname R01
+!
+login block-for 300 attempts 5 within 120
+!
+enable secret 5 Pb1p5WC2
+!
+username Jason secret 5 BnQVP0Vs
+!
+ip domain-name pxl.be
+!
+interface GigabitEthernet0/0/0
+description connection to SW01
+ip address 10.0.0.12 255.255.255.240
+ipv6 address 2001:DB8:ACAD:1::C/64
+!
+interface GigabitEthernet0/0/1
+description connection to SW02
+ip address 10.0.0.28 255.255.255.240
+ipv6 address 2001:DB8:ACAD:2::C/64
+!
+banner motd ^CWarning! Unauthorized access is prohibited^C
+!
+line con 0
+password 7 3BSBJjIZ
+login
+!
+line vty 0 4
+exec-timeout 5 30
+password 7 93pbXyNr
+login local
+transport input ssh
